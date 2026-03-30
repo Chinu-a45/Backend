@@ -6,7 +6,7 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   const fetchData = () => {
-    axios.get("http://localhost:3000/api/notes").then((res) => {
+    axios.get("https://title-dic-generator.onrender.com/api/notes").then((res) => {
       setNotes(res.data.notes);
     });
   };
@@ -16,13 +16,13 @@ function App() {
     const {title,discription,_id} = e.target
     console.log(_id.value)
     if(_id.value){
-      axios.patch(`http://localhost:3000/api/notes/${_id.value}`, {title: title.value,discription: discription.value})
+      axios.patch(`https://title-dic-generator.onrender.com/api/notes/${_id.value}`, {title: title.value,discription: discription.value})
       .then((data)=>{
         console.log(data)
       })
     }
     else{
-      axios.post("http://localhost:3000/api/notes",{
+      axios.post("https://title-dic-generator.onrender.com/api/notes",{
       "title": title.value,
       "discription": discription.value
     }).then((e)=>{
@@ -38,7 +38,7 @@ function App() {
   }
 
   function deleteNote(e){
-    axios.delete(`http://localhost:3000/api/notes/${e}`)
+    axios.delete(`https://title-dic-generator.onrender.com/api/notes/${e}`)
     .then(e=>{
       console.log(e.data)
     })
